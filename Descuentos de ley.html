@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descuentos de Ley Mesada Pensional</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0; /* Margen eliminado en la parte superior */
+            padding: 0 1cm; /* Margen lateral de 1 cm */
+        }
+
+        /* Estilos del encabezado */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #00c83c;
+            position: relative;
+        }
+
+        header img.logo {
+            height: 50px;
+            width: auto;
+        }
+
+        /* Estilos del título en el encabezado */
+        header h1 {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.5em;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        /* Estilos de las imágenes */
+        .circular-image {
+            width: 120px; /* Agrandado en 2 cm más */
+            height: 120px; /* Agrandado en 2 cm más */
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .circular-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Estilos generales */
+        .content {
+            margin: 20px 0; /* Ajustado para no afectar los márgenes laterales */
+        }
+
+        h2 {
+            color: #00c83c;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        .table-container {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #b8b7b7;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #00c83c;
+            color: white;
+        }
+
+        /* Estilos para el cuadro después de 'Descuentos vigentes a partir de 2024' */
+        .table-container {
+            background-color:  #f3f6f2; /* Fondo gris */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Estilos para 'Para tener en cuenta:' en negrita */
+        .highlight {
+            font-weight: bold;
+        }
+
+        /* Estilos de las cápsulas para 'Reglas de Aportes para Pensionados' */
+        .capsule-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Espacio entre las cápsulas */
+            margin-bottom: 20px;
+        }
+
+        .capsule {
+            background-color: #f3f6f2;
+            padding: 15px;
+            border-radius: 10px;
+            width: 30%; /* Ancho de cada cápsula */
+        }
+
+        /* Estilos del botón 'Volver al Menú' */
+        #backToMenu {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background: transparent;
+            border: 2px solid #02B1FF;
+            color: #02B1FF;
+            padding: 5px 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: background-color 0.3s, color 0.3s;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+        }
+
+        #backToMenu:hover {
+            background-color: #02B1FF;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado -->
+    <header>
+        <!-- Logo de Skandia -->
+        <img src="file:///C:/Users/lordonez/Desktop/BITACORA%20DE%20N%C3%93MINA%20DE%20PENSIONADOS/logo_skandia.png" alt="Logo Skandia" class="logo">
+
+        <!-- Título centrado en el encabezado -->
+        <h1>Descuentos de Ley Mesada Pensional</h1>
+
+        <!-- Imagen circular -->
+        <div class="circular-image">
+            <img src="file:///C:/Users/lordonez/Desktop/BITACORA%20DE%20N%C3%93MINA%20DE%20PENSIONADOS/Imagen_pensionados.png" alt="Imagen Pensionados">
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <div class="content">
+        <h2>Descuento a Salud</h2>
+        <p>Descuentos vigentes a partir de 2024</p>
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>MESADA PENSIONAL EN SALARIOS MÍNIMOS LEGALES MENSUALES VIGENTES (SMLMV)</th>
+                    <th>COTIZACIÓN MENSUAL EN SALUD</th>
+                </tr>
+                <tr>
+                    <td><strong>1 salario mínimo</strong></td>
+                    <td><strong>4%</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Mayor a 1 y hasta 3 salarios mínimos</strong></td>
+                    <td><strong>10%</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Mayor a 3 salarios mínimos</strong></td>
+                    <td><strong>12%</strong></td>
+                </tr>
+            </table>
+        </div>
+        <p><span class="highlight">Para tener en cuenta:</span> Es importante aclarar que si el pensionado tiene otras vinculaciones laborales, está obligado a cotizar a salud sobre las mismas, independiente de que en la mesada ya se haya realizado el descuento.</p>
+
+        <!-- Descuentos al Fondo de Solidaridad Pensional para Pensionados en Colombia -->
+        <h2>Descuentos al Fondo de Solidaridad Pensional para Pensionados en Colombia</h2>
+        <p>Reglas de Aportes para Pensionados:</p>
+        <div class="capsule-container">
+            <div class="capsule">
+                <p>1. Pensionados con mesada entre 10 y 20 SMMLV: aportan el 1%.</p>
+            </div>
+            <div class="capsule">
+                <p>2. Pensionados con Ingresos Superiores a 20 SMMLV: aportan el 2%.</p>
+            </div>
+        </div>
+
+        <!-- Cajas de Compensación Familiar -->
+        <h2>Cajas de Compensación Familiar</h2>
+        <p><strong>¿Qué son las Cajas de Compensación Familiar?</strong></p>
+        <p>Las Cajas de Compensación Familiar (CCF) son entidades privadas, sin ánimo de lucro, que administran los recursos destinados a ofrecer servicios y beneficios sociales a los trabajadores y pensionados afiliados. Estos servicios incluyen subsidios, programas educativos, recreativos, de salud, vivienda, y otros beneficios que contribuyen al bienestar integral de sus afiliados.</p>
+
+        <!-- Tarifas de Cajas de Compensación Familiar -->
+        <h2>Tarifas de Cajas de Compensación Familiar</h2>
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Concepto</th>
+                    <th>Descripción</th>
+                    <th>Tarifa/Porcentaje</th>
+                </tr>
+                <tr>
+                    <td>Pensionados con mesada hasta 1.5 SMLMV</td>
+                    <td>Acceden a servicios de recreación, deporte y cultura sin pago de cotización.</td>
+                    <td>0%</td>
+                </tr>
+                <tr>
+                    <td>Aporte voluntario para mesadas hasta 1.5 SMLMV</td>
+                    <td>Para servicios de turismo y capacitación.</td>
+                    <td>0.6% de la mesada pensional</td>
+                </tr>
+                <tr>
+                    <td>Aporte voluntario completo para mesadas hasta 1.5 SMLMV</td>
+                    <td>Para acceder a todos los servicios, excepto la cuota monetaria.</td>
+                    <td>2% de la mesada pensional</td>
+                </tr>
+                <tr>
+                    <td>Aporte para servicios limitados (superior a 1.5 SMLMV)</td>
+                    <td>Para servicios de recreación, turismo y capacitación.</td>
+                    <td>0.6% de la mesada pensional</td>
+                </tr>
+                <tr>
+                    <td>Aporte para servicios completos (superior a 1.5 SMLMV)</td>
+                    <td>Para acceder a todos los servicios, incluyendo subsidios monetarios.</td>
+                    <td>2% de la mesada pensional</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Aportes adicionales para cónyuges menores de 30 años -->
+        <h2>Aportes Adicionales para Cónyuges Menores de 30 Años por 20 Años</h2>
+        <p><strong>¿Qué implica este aporte?</strong></p>
+        <p>Es un aporte adicional a la pensión para cónyuges menores de 30 años que han estado en un vínculo con el pensionado durante 20 años. Este aporte busca compensar el tiempo de servicio y proporcionar un mejor ingreso a los beneficiarios más jóvenes.</p>
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Concepto</th>
+                    <th>Descripción</th>
+                    <th>Tarifa/Porcentaje</th>
+                </tr>
+                <tr>
+                    <td>Aporte a Pensión para Cónyuges Menores de 30 Años</td>
+                    <td>Adicional a la pensión principal por 20 años de relación con el pensionado.</td>
+                    <td>1.5% de la mesada pensional</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Otros descuentos de mesada -->
+        <h2>OTROS DESCUENTOS DE MESADA</h2>
+
+        <!-- Libranzas -->
+        <h3>Libranzas</h3>
+        <p>Los pensionados pueden acceder a créditos por libranza a través de los convenios que Skandia suscriba con los diferentes operadores de libranza. El descuento máximo permitido no podrá superar el 50% de la mesada después de descuentos de ley.</p>
+
+        <!-- Embargos -->
+        <h3>Embargos</h3>
+        <p>La mesada pensional puede ser embargada por deudas con cooperativas, fondos de empleados y demandas de alimentos; este descuento no podrá superar el 50% de la mesada pensional después de descuentos de ley.</p>
+        <p><strong>Para tener en cuenta:</strong></p>
+        <ul>
+            <li>El embargo de la mesada pensional solo aplica cuando exista una orden judicial en la cual se ordene la retención de un porcentaje de la mesada por deudas con cooperativas, fondos de empleados y demandas de alimentos.</li>
+            <li>Si el pensionado tiene una cuenta de ahorros o corriente en la cual se consigna la mesada pensional y dicha cuenta no está marcada en la entidad bancaria como cuenta pensión, estará sujeta a ser embargada.</li>
+        </ul>
+    </div>
+
+    <!-- Información adicional -->
+    <div class="footer">
+        <p>Para consultas adicionales, por favor comuníquese con nuestro servicio al cliente.</p>
+        <a id="backToMenu" href="file:///C:/Users/lordonez/Desktop/BITACORA%20DE%20N%C3%93MINA%20DE%20PENSIONADOS/Index.html">Volver al Menú</a>
+    </div>
+
+</body>
+</html>

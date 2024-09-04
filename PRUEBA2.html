@@ -1,0 +1,356 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo de Consultas - Nómina de Pensionados</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0 1cm 150px;
+            color: #3f3f3f;
+            background-color: #ffffff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .content {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        header {
+            background: #00c83c;
+            color: #fff;
+            padding: 20px 40px;
+            text-align: center;
+            border-bottom: 3px solid #00c83c;
+            position: relative;
+        }
+        .logo-skandia {
+            max-height: 4.5em; /* Tamaño del logo incrementado en 1cm más grande */
+            position: absolute;
+            top: 0.5cm; /* Ubicación ajustada 1cm arriba de la ubicación anterior */
+            left: 1cm; /* Ubicación a 1cm del borde izquierdo */
+            margin: 0;
+        }
+        .circle-image {
+            width: 125px; /* Tamaño reducido en 2 cm */
+            height: 125px; /* Tamaño reducido en 2 cm */
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #fff;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .circle-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .button, .dropdown {
+            border-radius: 25px;
+            font-weight: 700;
+            background: transparent;
+            color: #00c83c;
+            padding: 8px 12px;
+            text-align: center;
+            margin: 8px;
+            text-decoration: none;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 2px solid #00c83c;
+            transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.3s;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 100px;
+            font-size: 0.8em;
+            box-sizing: border-box;
+        }
+        .button span {
+            display: block;
+            text-align: center;
+            line-height: 1.2;
+        }
+        .button:hover {
+            background: #00c83c;
+            color: #fff;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), 0 3px 6px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 20;
+            border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            min-width: 180px;
+            padding: 5px 0;
+        }
+        .button:hover .dropdown,
+        .dropdown:hover {
+            display: block;
+            opacity: 1;
+        }
+        .dropdown a {
+            display: block;
+            padding: 8px 10px;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            font-size: 1.2em;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .dropdown a:hover {
+            background: #f0f0f0;
+            color: #000;
+        }
+        .welcome-text {
+            font-size: 1em;
+            color: #333;
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+        .container .button {
+            max-width: 140px;
+        }
+        .logo {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            max-height: 100px;
+            max-width: 100px;
+        }
+        #toggleDarkMode {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background: transparent;
+            border: 2px solid #00c83c;
+            color: #00c83c;
+            padding: 5px 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.2em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+        }
+        #toggleDarkMode:hover {
+            background: #00c83c;
+            color: #fff;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        body.dark-mode {
+            color: #ffffff;
+            background-color: #000000;
+        }
+        body.dark-mode header {
+            background: #009e30;
+            border-bottom: 3px solid #009e30;
+        }
+        body.dark-mode .welcome-text {
+            color: #ffffff;
+            background-color: #444444;
+            border-color: #555555;
+        }
+        body.dark-mode .button, body.dark-mode .dropdown a {
+            background: transparent;
+            color: #00c83c;
+            border: 2px solid #00c83c;
+        }
+        body.dark-mode .button:hover {
+            background: #00c83c;
+            color: #ffffff;
+            border: 2px solid #00c83c;
+        }
+        body.dark-mode .dropdown {
+            background: #555555;
+            border-color: #666666;
+        }
+        body.dark-mode .dropdown a {
+            color: #ffffff;
+            border-bottom: 1px solid #666666;
+        }
+        body.dark-mode .dropdown a:hover {
+            background: #7d7d7d;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <header>
+            <img src="logo_skandia.png" alt="Logo Skandia" class="logo-skandia">
+            <h1>Módulo de Consultas - Nómina de Pensionados</h1>
+            <div class="circle-image">
+                <img src="muchacho_PC.png" alt="Imagen de Pensionados">
+            </div>
+            <button id="toggleDarkMode" aria-label="Cambiar modo oscuro">Modo oscuro</button>
+        </header>
+        <div class="welcome-text">
+            ¡Bienvenidos al Módulo de Consultas - Nómina de Pensionados! Este es un espacio diseñado con el objetivo de facilitar el acceso a la información que necesitan para brindar un servicio excepcional a nuestros pensionados.
+        </div>
+        <div class="container">
+            <div class="button" id="pagosDeMesadasButton">
+                <span>PAGOS DE NÓMINA</span>
+                <div class="dropdown">
+                     <a href="C:/Users/lordonez/Desktop/BITACORA DE NÓMINA DE PENSIONADOS/Cronograma.html">Cronograma</a>
+					 <a href="C:/Users/lordonez/Desktop/BITACORA DE NÓMINA DE PENSIONADOS/Novedades.html">Novedades</a>
+					 <a href="C:/Users/lordonez/Desktop/BITACORA DE NÓMINA DE PENSIONADOS/Instrucciones de cheques.html">Instrucciones de cheques</a>
+					 <a href="C:/Users/lordonez/Desktop/BITACORA DE NÓMINA DE PENSIONADOS/Rechazos.html">Rechazos</a>
+					 <a href="C:/Users/lordonez/Desktop/BITACORA DE NÓMINA DE PENSIONADOS/Formas de pago.html">Formas de pago</a>
+					 <a href="C:/Users/lordonez/Desktop/BITACORA DE NÓMINA DE PENSIONADOS/Convenios bancarios.html">Convenios bancarios</a>
+                     <a href="C:/Users/lordonez/Desktop/BITACORA DE NÓMINA DE PENSIONADOS/Descuentos de ley.html">Descuentos de ley</a>
+                </div>
+            </div>
+            <div class="button" id="otrosPagosButton">
+                <span>OTROS PAGOS</span>
+                <div class="dropdown">
+                    <a href="#">Documentos ingreso a nómina</a>
+                    <a href="#">Fecha de pago</a>
+                    <a href="#">Listado de bancos</a>
+                    <a href="#">Tipos de pagos</a>
+                </div>
+            </div>
+            <div class="button" id="saludButton">
+                <span>SALUD</span>
+                <div class="dropdown">
+                    <a href="#">Formato de afiliación</a>
+                    <a href="#">Cobertura</a>
+                    <a href="#">Proceso de solicitud</a>
+                    <a href="#">Requisitos</a>
+                </div>
+            </div>
+            <div class="button" id="libranzasButton">
+                <span>LIBRANZAS</span>
+                <div class="dropdown">
+                    <a href="#">Formato de libranza</a>
+                    <a href="#">Documentación requerida</a>
+                    <a href="#">Cálculo y deducción</a>
+                    <a href="#">Reportes y estados</a>
+                    <a href="#">Otros ingresos</a>
+                </div>
+            </div>
+            <div class="button" id="escolaridadButton">
+                <span>ESCOLARIDAD</span>
+                <div class="dropdown">
+                    <a href="#">Solicitud de subsidio</a>
+                    <a href="#">Documentos necesarios</a>
+                    <a href="#">Proceso de evaluación</a>
+                    <a href="#">Requisitos para aprobación</a>
+                    <a href="#">Calendario</a>
+                </div>
+            </div>
+            <div class="button" id="supervivenciaButton">
+                <span>SUPERVIVENCIA</span>
+                <div class="dropdown">
+                    <a href="#">Certificación semestral</a>
+                    <a href="#">Documentación requerida</a>
+                    <a href="#">Proceso de validación</a>
+                    <a href="#">Fechas y plazos</a>
+                </div>
+            </div>
+            <div class="button" id="embargosButton">
+                <span>EMBARGOS</span>
+                <div class="dropdown">
+                    <a href="#">Información de embargos</a>
+                    <a href="#">Procedimiento de pago</a>
+                    <a href="#">Documentación necesaria</a>
+                    <a href="#">Consultas y seguimientos</a>
+                </div>
+            </div>
+            <div class="button" id="marcacionRuafSiafpButton">
+                <span>MARCACION EN RUAF - SIAFP</span>
+                <div class="dropdown">
+                    <a href="#">Proceso de marcación</a>
+                    <a href="#">Requisitos</a>
+                    <a href="#">Documentos</a>
+                    <a href="#">Actualizaciones</a>
+                    <a href="#">Consultas</a>
+                </div>
+            </div>
+            <div class="button" id="recalculoAnualButton">
+                <span>RECÁLCULO ANUAL</span>
+                <div class="dropdown">
+                    <a href="#">Instrucciones</a>
+                    <a href="#">Cálculo</a>
+                    <a href="#">Fechas</a>
+                    <a href="#">Requerimientos</a>
+                </div>
+            </div>
+            <div class="button" id="seguroColectivoButton">
+                <span>SEGURO COLECTIVO</span>
+                <div class="dropdown">
+                    <a href="#">Política</a>
+                    <a href="#">Cobertura</a>
+                    <a href="#">Documentos</a>
+                    <a href="#">Consultas</a>
+                </div>
+            </div>
+            <div class="button" id="reformaPensionalButton">
+                <span>REFORMA PENSIONAL</span>
+                <div class="dropdown">
+                    <a href="#">Cambios recientes</a>
+                    <a href="#">Documentos</a>
+                    <a href="#">Impacto</a>
+                    <a href="#">Consultas</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Función para activar el modo oscuro y claro
+        document.getElementById('toggleDarkMode').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            this.textContent = document.body.classList.contains('dark-mode') ? 'Modo claro' : 'Modo oscuro';
+        });
+
+        // Función para mantener el menú desplegable visible por 0.5 segundos
+        document.querySelectorAll('.button').forEach(button => {
+            let timeout;
+            button.addEventListener('mouseenter', () => {
+                clearTimeout(timeout);
+                button.querySelector('.dropdown').style.display = 'block';
+            });
+            button.addEventListener('mouseleave', () => {
+                timeout = setTimeout(() => {
+                    button.querySelector('.dropdown').style.display = 'none';
+                }, 500);
+            });
+            button.querySelector('.dropdown').addEventListener('mouseenter', () => {
+                clearTimeout(timeout);
+                button.querySelector('.dropdown').style.display = 'block';
+            });
+            button.querySelector('.dropdown').addEventListener('mouseleave', () => {
+                timeout = setTimeout(() => {
+                    button.querySelector('.dropdown').style.display = 'none';
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>

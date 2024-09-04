@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instrucciones de Cheques</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #3f3f3f;
+            background-color: #ffffff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Estilos del header */
+        header {
+            background: #00c83c;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            border-bottom: 3px solid #00c83c;
+            position: relative;
+        }
+
+        header h1 {
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo-skandia {
+            max-height: 4.5em;
+            position: absolute;
+            top: 0.5cm;
+            left: 1cm;
+        }
+
+        /* Títulos */
+        h1, h2 {
+            color: #00c83c;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        h3 {
+            color: #02B1FF;
+            margin-bottom: 10px;
+        }
+
+        /* Párrafos */
+        p {
+            font-size: 18px;
+            color: #333;
+            text-align: justify;
+            margin: 20px 0;
+        }
+
+        /* Imagen "cheques" circular en la esquina superior derecha */
+        .cheques-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            border: 2px solid #00c83c;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .cheques-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Contenedor de cápsulas circulares */
+        .capsule-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* Cápsula circular */
+        .capsule-circle {
+            width: 100px;
+            height: 100px;
+            background-color: #f8f8f8;
+            border: 2px solid #00c83c;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .capsule-circle img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .capsule-circle:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Contenedor de botones */
+        .button-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        /* Botón */
+        .button {
+            background-color: transparent;
+            color: #FF007E;
+            padding: 15px 30px;
+            border: 2px solid #FF007E;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 10px;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        /* Efecto hover en botón */
+        .button:hover {
+            background-color: #FF007E;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        /* Botón de regresar al menú */
+        .volver-menu {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #00c83c;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Estilo hover para el botón de regresar al menú */
+        .volver-menu:hover {
+            background-color: #00a82f;
+            color: #fff;
+        }
+
+        /* Botones de Excel */
+        .excel-buttons {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .excel-button {
+            background-color: #FF007E;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 10px;
+            transition: background-color 0.3s, transform 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        /* Efecto hover en botón de Excel */
+        .excel-button:hover {
+            background-color: #FF007E;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Instrucciones de Cheques</h1>
+        <img src="logo_skandia.png" alt="Logo Skandia" class="logo-skandia">
+    </header>
+
+    <!-- Imagen "cheques" en un círculo en la parte superior derecha -->
+    <div class="cheques-circle">
+        <img src="cheques.png" alt="Cheques">
+    </div>
+
+    <h2>Información Importante sobre el Pago de Mesadas en Cheque</h2>
+    <p>Los siguientes bancos quedan grabados como cheque en el sistema AS400:</p>
+    <p><strong>QUEDAN GRABADOS EN CHEQUE:</strong></p>
+    <ul></p>
+    </p>
+        <li>Lulo Bank</li>
+        <li>Pi Bank</li>
+        <li>NU Bank</li>
+        <li>Rappipay</li>
+        <li>Serfinanza</li>
+        <li>Banco Mundo Mujer</li>
+        <li>Banco Unión</li>
+        <li>Finandina</li>
+        <li>Bancamia</li>
+        <li>Mi Banco</li>
+    </ul>
+
+    <div class="capsule-container">
+        <div class="capsule-circle">
+            <img src="LULO.png" alt="Lulo Bank">
+        </div>
+        <div class="capsule-circle">
+            <img src="PIBANNK.png" alt="Pi Bank">
+        </div>
+        <div class="capsule-circle">
+            <img src="NU.png" alt="NU Bank">
+        </div>
+        <div class="capsule-circle">
+            <img src="Rappipay.png" alt="Rappipay">
+        </div>
+        <div class="capsule-circle">
+            <img src="serfinanza.png" alt="Serfinanza">
+        </div>
+        <div class="capsule-circle">
+            <img src="Banco mundo mujer.png" alt="Banco Mundo Mujer">
+        </div>
+        <div class="capsule-circle">
+            <img src="Banco unión.png" alt="Banco Unión">
+        </div>
+        <div class="capsule-circle">
+            <img src="Finandina.png" alt="Finandina">
+        </div>
+        <div class="capsule-circle">
+            <img src="bancamia.png" alt="Bancamia">
+        </div>
+        <div class="capsule-circle">
+            <img src="Mi Banco.png" alt="Mi Banco">
+        </div>
+    </div>
+<ul></p>
+    </p><h2>OTROS PAGOS QUE SE GRABAN EN CHEQUE</h2>
+    <p>Pensionados que solicitan la totalidad o un porcentaje del pago de la mesada pensional a un producto voluntario como FCO – MFUND - OMPEV o SIPEN.</p>
+    <p>Pago de indemnización a dependientes a través de cheque cuando el pensionado ha fallecido.</p>
+
+    <div class="button-container">
+        <a href="Archivo_GYP.pdf" class="button">Cheques y ACH´s Archivo_GYP</a>
+        <a href="Cheques_Colpatria_GYP.pdf" class="button">Cheques_Colpatria_GYP</a>
+        <a href="INSTRUCCION_CHEQUES_NOMINA_PENSIONADOS_FPAL_AGOSTO_22_2024.pdf" class="button">INSTRUCCIÓN CHEQUES NÓMINA PENSIONADOS FPAL AGOSTO 22 - 2024</a>
+        <a href="PLANTILLA_LEAN_CHEQUES_NOMINA_PENSIONADOS_AJUSTADA.pdf" class="button">PLANTILLA LEAN - CHEQUES NÓMINA PENSIONADOS AJUSTADA</a>
+    </div>
+
+    <a href="menu_principal.html" class="volver-menu">Volver al Menú</a>
+</body>
+</html>

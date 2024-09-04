@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo de Consultas - Nómina de Pensionados</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0 1cm 150px;
+            color: #3f3f3f;
+            background-color: #ffffff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .content {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        header {
+            background: #00c83c;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            border-bottom: 3px solid #00c83c;
+            position: relative;
+        }
+        .circle-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #fff;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .circle-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .button, .dropdown {
+            border-radius: 25px;
+            font-weight: 700;
+            background: #00c83c;
+            color: #fff;
+            padding: 10px 15px;
+            text-align: center;
+            margin: 8px;
+            text-decoration: none;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 120px;
+            font-size: 0.9em;
+            box-sizing: border-box;
+        }
+        .button span {
+            display: block;
+            text-align: center;
+            line-height: 1.2;
+        }
+        .button:hover {
+            background: #009e30;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), 0 3px 6px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 20;
+            border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            min-width: 200px;
+        }
+        .button.active .dropdown {
+            display: block;
+            opacity: 1;
+        }
+        .dropdown a {
+            display: block;
+            padding: 8px 10px;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            font-size: 0.8em;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .dropdown a:hover {
+            background: #f0f0f0;
+            color: #000;
+        }
+        .welcome-text {
+            font-size: 1em;
+            color: #333;
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+        .container .button {
+            max-width: 160px;
+        }
+        .logo {
+            position: fixed;
+            bottom: 3cm;
+            right: 10px;
+            max-height: 100px;
+            max-width: 100px;
+        }
+        /* Botón de modo oscuro */
+        #toggleDarkMode {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background: #00c83c;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        #toggleDarkMode:hover {
+            background: #009e30;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        /* Estilos para el modo oscuro */
+        body.dark-mode {
+            color: #ffffff;
+            background-color: #000000;
+        }
+        body.dark-mode header {
+            background: #009e30;
+            border-bottom: 3px solid #009e30;
+        }
+        body.dark-mode .welcome-text {
+            color: #ffffff;
+            background-color: #444444;
+            border-color: #555555;
+        }
+        body.dark-mode .button, body.dark-mode .dropdown a {
+            background: #009e30;
+            color: #ffffff;
+        }
+        body.dark-mode .button:hover {
+            background: #007a24;
+        }
+        body.dark-mode .dropdown {
+            background: #555555;
+            border-color: #666666;
+        }
+        body.dark-mode .dropdown a {
+            color: #ffffff;
+            border-bottom: 1px solid #666666;
+        }
+        body.dark-mode .dropdown a:hover {
+            background: #666666;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <header>
+            <h1>Módulo de Consultas - Nómina de Pensionados</h1>
+            <div class="circle-image">
+                <img src="Imagen_pensionados.png" alt="Imagen de Pensionados">
+            </div>
+            <!-- Botón de Modo Oscuro -->
+            <button id="toggleDarkMode" aria-label="Cambiar modo oscuro">Modo oscuro</button>
+        </header>
+        <div class="welcome-text">
+            ¡Bienvenidos al Módulo de Consultas - Nómina de Pensionados! Este es un espacio diseñado con el objetivo de facilitar el acceso a la información que necesitan para brindar un servicio excepcional a nuestros pensionados.
+        </div>
+        <div class="container">
+            <div class="button" id="escolaridadButton">
+                <span>ESCOLARIDAD</span>
+                <div class="dropdown">
+                    <a href="LEY 1574 DE 2012.html" target="_blank">Normatividad</a>
+                    <a href="PLAZO ESCOLARIDAD.html" target=>Plazos y condiciones del certificado</a>
+                    <a href="certificado.pdf" target="_blank">Ejemplo de Certificado</a>
+                    <a href="bloqueados.pdf" target="_blank">Bloqueados por Escolaridad</a>
+                </div>
+            </div>
+            <div class="button" id="supervivenciaButton">
+                <span>SUPERVIVENCIA</span>
+                <div class="dropdown">
+                    <a href="informacion_general.html" target="_blank">Información General</a>
+                    <a href="procedimiento_certificacion.html" target="_blank">Procedimiento de Certificación</a>
+                    <a href="documentacion_requerida.html" target="_blank">Documentación Requerida</a>
+                    <a href="fechas_plazos.html" target="_blank">Fechas y Plazos</a>
+                    <a href="contacto_soporte.html" target="_blank">Contacto y Soporte</a>
+                </div>
+            </div>
+            <a href="fechas_importantes.pdf" class="button" target="_blank"><span>FECHAS IMPORTANTES</span></a>
+            <a href="libranzas.pdf" class="button" target="_blank"><span>LIBRANZAS</span></a>
+            <a href="https://www.skandia.com.co/quienes-somos/skandia-en-colombia/skandia-seguros-de-vida-sa/skandia-seguro-colectivo-de-pensiones/Paginas/seguro-colectivo-de-pensiones.aspx" class="button" target="_blank"><span>SEGURO COLECTIVO</span></a>
+            <a href="pago_mesadas.pdf" class="button" target="_blank"><span>PAGO DE MESADAS</span></a>
+            <a href="retroactivos.pdf" class="button" target="_blank"><span>RETROACTIVOS</span></a>
+            <a href="salud.pdf" class="button" target="_blank"><span>SALUD</span></a>
+            <a href="residentes_exterior.pdf" class="button" target="_blank"><span>RESIDENTES EN EL EXTERIOR</span></a>
+            <div class="button" id="reformaPensionalButton">
+                <span>REFORMA PENSIONAL</span>
+                <div class="dropdown">
+                    <a href="LEY 2381 DEL 16 DE JULIO DE 2024.pdf" target="_blank">CONSULTA LEY 2381</a>
+                    <a href="https://tuahorro.skandia.com.co/plan-de-retiro?utm_source=new_hub&utm_medium=menu&utm_campaign=growth" target="_blank">CÓMO TE IMPACTA</a>
+                    <a href="Resumen_reforma.png" target="_blank">RESUMEN REFORMA</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="text-align:center">
+        <!-- Asegúrate de que la ruta del logo sea correcta -->
+        <img src="logo_skandia.png" alt="Logo Skandia" class="logo">
+    </div>
+    <script>
+        const escolaridadButton = document.getElementById('escolaridadButton');
+        const reformaPensionalButton = document.getElementById('reformaPensionalButton');
+        const supervivenciaButton = document.getElementById('supervivenciaButton');
+
+        // Variables para manejar el temporizador de ocultación del menú
+        let timer;
+        const delay = 500; // Tiempo en milisegundos
+
+        function showDropdown(button) {
+            // Cerrar todos los menús desplegables
+            closeAllDropdowns();
+            // Mostrar el menú desplegable del botón activado
+            button.classList.add('active');
+        }
+
+        function hideDropdown(button) {
+            timer = setTimeout(() => {
+                button.classList.remove('active');
+            }, delay);
+        }
+
+        function closeAllDropdowns() {
+            escolaridadButton.classList.remove('active');
+            reformaPensionalButton.classList.remove('active');
+            supervivenciaButton.classList.remove('active');
+        }
+
+        document.addEventListener('mouseover', (e) => {
+            if (e.target.closest('.button') === escolaridadButton || e.target.closest('.button') === reformaPensionalButton || e.target.closest('.button') === supervivenciaButton) {
+                clearTimeout(timer);
+                showDropdown(e.target.closest('.button'));
+            }
+        });
+
+        document.addEventListener('mouseout', (e) => {
+            if (e.target.closest('.button') === escolaridadButton || e.target.closest('.button') === reformaPensionalButton || e.target.closest('.button') === supervivenciaButton) {
+                hideDropdown(e.target.closest('.button'));
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            const isDropdownButton = e.target.closest('.button') === escolaridadButton || e.target.closest('.button') === reformaPensionalButton || e.target.closest('.button') === supervivenciaButton;
+            if (!isDropdownButton) {
+                closeAllDropdowns();
+            } else {
+                showDropdown(e.target.closest('.button'));
+            }
+        });
+
+        const toggleDarkMode = document.getElementById('toggleDarkMode');
+        toggleDarkMode.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+</html>

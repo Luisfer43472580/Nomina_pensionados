@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEY 1574 DE 2012 - Información</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0 1cm 80px; /* Ajuste para espacio adicional en la parte inferior */
+            color: #3f3f3f;
+            background-color: #ffffff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .content {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #00c83c;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            border-bottom: 3px solid #00c83c;
+            position: relative;
+        }
+        .circle-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #fff;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .circle-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .button, .dropdown {
+            border-radius: 25px;
+            font-weight: 700;
+            background: #00c83c;
+            color: #fff;
+            padding: 10px 15px;
+            text-align: center;
+            margin: 8px;
+            text-decoration: none;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 120px;
+            font-size: 0.9em;
+            box-sizing: border-box;
+        }
+        .button span {
+            display: block;
+            text-align: center;
+            line-height: 1.2;
+        }
+        .button:hover {
+            background: #009e30;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), 0 3px 6px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 20;
+            border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            min-width: 200px;
+        }
+        .button.active .dropdown {
+            display: block;
+            opacity: 1;
+        }
+        .dropdown a {
+            display: block;
+            padding: 8px 10px;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            font-size: 0.8em;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .dropdown a:hover {
+            background: #f0f0f0;
+            color: #000;
+        }
+        .text-content {
+            margin-top: 20px;
+            font-size: 1.1em; /* Aumento en tamaño del texto */
+            color: #333;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f0f0f0; /* Fondo gris claro */
+            border-radius: 10px;
+        }
+        .logo {
+            position: fixed;
+            bottom: 3cm;
+            right: 10px;
+            max-height: 100px;
+            max-width: 100px;
+        }
+
+        /* Estilos para el botón "Volver al menú" */
+        #backToMenu {
+            position: fixed;
+            bottom: 60px; /* Ajuste para que esté encima del botón "Ver Ley" */
+            right: 20px;
+            background-color: #00c83c;
+            border: none;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        /* Estilos para el botón "Ver Ley 1574 de 2012" */
+        #viewLeyButton {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #00c83c;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        #viewLeyButton:hover {
+            background-color: #009e30;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Estilos para el modo oscuro */
+        body.dark-mode {
+            color: #ffffff;
+            background-color: #000000;
+        }
+        body.dark-mode header {
+            background: #009e30;
+            border-bottom: 3px solid #009e30;
+        }
+        body.dark-mode .text-content {
+            color: #ffffff;
+            background-color: #444444;
+            border-color: #555555;
+        }
+        body.dark-mode .button, body.dark-mode .dropdown a {
+            background: #009e30;
+            color: #ffffff;
+        }
+        body.dark-mode .button:hover {
+            background: #007a24;
+        }
+        body.dark-mode .dropdown {
+            background: #555555;
+            border-color: #666666;
+        }
+        body.dark-mode .dropdown a {
+            color: #ffffff;
+            border-bottom: 1px solid #666666;
+        }
+        body.dark-mode .dropdown a:hover {
+            background: #666666;
+        }
+        .capsule {
+            background-color: transparent; /* Fondo transparente */
+            color: #3f3f3f; /* Color del texto */
+            border: 2px solid #00C83C; /* Borde verde */
+            border-radius: 15px;
+            padding: 20px 25px;
+            margin-bottom: 10px;
+            font-size: 1.2em; /* Aumento en tamaño del texto */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <header>
+            <h1>Información sobre la LEY 1574 DE 2012</h1>
+            <div class="circle-image">
+                <img src="Imagen_pensionados.png" alt="Imagen de Pensionados">
+            </div>
+            <button id="toggleDarkMode" style="position: absolute; left: 10px; top: 10px; background: none; border: none; color: #fff; cursor: pointer;">??</button>
+        </header>
+        <div class="text-content">
+            <div class="capsule">
+                <strong>Objeto de la Ley (Artículo 1):</strong> Define las condiciones mínimas para acreditar la condición de estudiante para hijos del causante mayores de 18 y hasta 25 años para el reconocimiento de la pensión de sobrevivientes.
+            </div>
+            <div class="capsule">
+                <strong>Condición de Estudiante (Artículo 2):</strong> Requisitos para el reconocimiento de la pensión de sobreviviente: Certificación de dedicación académica de al menos 20 horas semanales de una institución de educación formal. Para educación para el trabajo y desarrollo humano, se requiere una certificación con una intensidad académica no inferior a 160 horas por periodo académico. Certificaciones de asistencia deben presentarse semestralmente. Se consideran horas de acompañamiento directo del docente y horas no presenciales siempre que formen parte del plan de estudios. Para programas en el exterior, se necesita la certificación de dedicación académica y la certificación de la institución educativa por la autoridad competente del país.
+            </div>
+            <div class="capsule">
+                <strong>Documentación (Artículo 3):</strong> Se establece un plazo de 6 meses a partir de la fecha de solicitud para presentar la documentación completa y validarla con el Sistema de Información de la Protección Social (SISPRO).
+            </div>
+            <div class="capsule">
+                <strong>Validez de la Ley (Artículo 4):</strong> La Ley es de carácter nacional y aplica a todos los regímenes pensionales del país. La ley entra en vigencia a partir del 1 de enero de 2013.
+            </div>
+        </div>
+    </div>
+    <button id="viewLeyButton" onclick="window.open('Ley_1574_de_2012.pdf', '_blank')">VER LEY 1574 DE 2012 PDF</button>
+    <button id="backToMenu" class="button" onclick="window.location.href='DISEÑO WEB 2.html'">Volver al menú</button>
+    <script>
+        const ley1574Button = document.getElementById('ley1574Button');
+
+        // Variables para manejar el temporizador de ocultación del menú
+        let timer;
+        const delay = 500; // Tiempo en milisegundos
+
+        function showDropdown(button) {
+            button.classList.add('active');
+        }
+
+        function hideDropdown(button) {
+            timer = setTimeout(() => {
+                button.classList.remove('active');
+            }, delay);
+        }
+
+        document.addEventListener('mouseover', (e) => {
+            if (e.target.closest('.button') === ley1574Button) {
+                clearTimeout(timer);
+                showDropdown(e.target.closest('.button'));
+            }
+        });
+
+        document.addEventListener('mouseout', (e) => {
+            if (e.target.closest('.button') === ley1574Button) {
+                hideDropdown(e.target.closest('.button'));
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            const isDropdownButton = e.target.closest('.button') === ley1574Button;
+            if (!isDropdownButton) {
+                ley1574Button.classList.remove('active');
+            } else {
+                e.target.closest('.button').classList.toggle('active');
+            }
+        });
+
+        const toggleDarkMode = document.getElementById('toggleDarkMode');
+        toggleDarkMode.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+</html>

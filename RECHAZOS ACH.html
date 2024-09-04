@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECHAZOS ACH NOMINA DE PENSIONADOS</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0 2cm 160px;
+            color: #3f3f3f;
+            background-color: #ffffff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.dark-mode {
+            color: #ffffff;
+            background-color: #3f3f3f;
+        }
+        header {
+            background: #00c83c;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            border-bottom: 3px solid #00c83c;
+            position: relative;
+        }
+        header h1 {
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .logo-skandia {
+            max-height: 4.5em;
+            position: absolute;
+            top: 0.5cm;
+            left: 1cm;
+        }
+        .circle-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: absolute;
+            top: 0.5cm;
+            right: 0.5cm;
+        }
+        .capsule {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .capsule h2 {
+            color: #00c83c;
+            margin-bottom: 10px;
+        }
+        body.dark-mode .capsule {
+            background-color: #4f4f4f;
+            color: #ffffff;
+        }
+        button, .button, .dropdown {
+            border-radius: 25px;
+            font-weight: 700;
+            background: transparent;
+            color: #00c83c;
+            padding: 8px 12px;
+            margin: 8px;
+            border: 2px solid #00c83c;
+            transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.3s;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 100px;
+            font-size: 0.8em;
+        }
+        .button:hover {
+            background: #00c83c;
+            color: #fff;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), 0 3px 6px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+        #backToMenu {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background: transparent;
+            border: 2px solid #00c83c;
+            color: #00c83c;
+            padding: 5px 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: background-color 0.3s, color 0.3s;
+            text-decoration: none;
+        }
+        #backToMenu:hover {
+            background-color: #00c83c;
+            color: #fff;
+        }
+        #toggleDarkMode {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: transparent;
+            border: 2px solid #00c83c;
+            color: #00c83c;
+            padding: 5px 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        #toggleDarkMode:hover {
+            background-color: #00c83c;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="C:\Users\lordonez\Desktop\BITACORA DE NÓMINA DE PENSIONADOS\logo_skandia.png" alt="Logo Skandia" class="logo-skandia">
+        <img src="C:\Users\lordonez\Desktop\BITACORA DE NÓMINA DE PENSIONADOS\novedades.jpeg" alt="Novedades" class="circle-image">
+        <h1>RECHAZOS ACH NOMINA DE PENSIONADOS</h1>
+    </header>
+    <button id="toggleDarkMode">Modo oscuro</button>
+    <div class="container">
+        <div class="capsule">
+            <h2>¿DÓNDE CONSULTAR EL RECHAZO DE UNA MESADA PENSIONAL?</h2>
+            <p>Para consultar el estado del giro debes ingresar al siguiente link de Respuestas_Pagos_ACH:</p>
+            <a href="http://cobodb56/Reports/report/Reportes%20por%20Area/Control%20Financiero/Respuesta_Pagos_ACH" target="_blank">Respuestas_Pagos_ACH</a>
+        </div>
+        <div class="capsule">
+            <h2>¿QUIÉN SE ENCARGA DE REPORTAR LOS RECHAZOS PARA QUE SEAN GESTIONADOS?</h2>
+            <p>Posterior al pago de la nómina de pensionados del 24 de cada mes, el Área de Servicio al Cliente (SAC) asigna un Analista que se encarga de reportar los rechazos al Área de Gestión de Prestaciones a través de correo electrónico.</p>
+        </div>
+        <div class="capsule">
+            <h2>¿QUIÉN GESTIONA LOS RECHAZOS EN EL ÁREA DE GESTIÓN DE PRESTACIONES?</h2>
+            <p>El Analista de Gestión de Prestaciones encargado de procesar el pago de la nómina de pensionados es responsable de validar cada rechazo y dar la respectiva instrucción al Analista de Servicio al Cliente, para que este a su vez remita la instrucción al Área de Giros y Pagos.</p>
+        </div>
+        <div class="capsule">
+            <h2>¿DÓNDE PUEDO CONSULTAR LA GESTIÓN REALIZADA AL RECHAZO?</h2>
+            <p>El Analista de Servicio al Cliente, por cada rechazo reportado, debe crear un caso en Salesforce donde va dejando los soportes y comentarios de la gestión realizada.</p>
+        </div>
+        <div class="capsule">
+            <h2>¿QUÉ OTROS CANALES ESTÁN DISPONIBLES PARA CONSULTAR SI UN RECHAZO FUE REENVIADO NUEVAMENTE POR ACH?</h2>
+            <p>En la ruta N:\Estadísticas GYP, en la carpeta CUENTA A CUENTA, puedes consultar el archivo de Excel llamado "CUENTA A CUENTA POR AÑO" y en la hoja del mes correspondiente validar si el cuenta a cuenta fue gestionado y el estado del mismo filtrando por la cédula del pensionado.</p>
+        </div>
+        <div class="capsule">
+            <h2>PARA TENER EN CUENTA</h2>
+            <p>El estado del pago por ACH consultado por el link Respuestas_Pagos_ACH solo muestra el estado del envío inicial del ACH. Cuando el Área de Giros y Pagos reenvía el ACH, el estado del giro en esta consulta no se actualiza. Debes consultarlo en la ruta N:\Estadísticas GYP o directamente con el Área de Giros y Pagos.</p>
+        </div>
+    </div>
+    <a href="file:///C:/Users/lordonez/Desktop/BITACORA%20DE%20N%C3%93MINA%20DE%20PENSIONADOS/Index.html" id="backToMenu">Volver al Menú</a>
+    <script>
+        const toggleDarkModeBtn = document.getElementById('toggleDarkMode');
+        toggleDarkModeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            toggleDarkModeBtn.textContent = document.body.classList.contains('dark-mode') ? 'Modo claro' : 'Modo oscuro';
+        });
+    </script>
+</body>
+</html>
